@@ -15,13 +15,21 @@ forums](https://discuss.streamlit.io).
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
+def rgb_to_hex(r, g, b):
+    return "#{:02x}{:02x}{:02x}".format(r, g, b)
 
 with st.echo(code_location='below'):
     total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
     num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
+    red = st.slide("color RED", 0, 255, 0)
+    green = st.slide("color RED", 0, 255, 104)
+    blue = st.slide("color RED", 0, 255, 201)
 
     Point = namedtuple('Point', 'x y')
     data = []
+
+
+    color_str = rgb_to_hex(red, green, blue)
 
     points_per_turn = total_points / num_turns
 
